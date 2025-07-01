@@ -14,11 +14,11 @@ def build_check_prompt(query, answer, context_full):
         Answer only "yes" or "no".
         """
 
-def gpt_check_answer(query, answer, context, max_retry=5, sleep_sec=2):
+def gpt_check_answer(query, answer, context, endpoint, api_key, api_version, max_retry=5, sleep_sec=2):
     client = AzureOpenAI(
-        api_version="YOUR_AZURE_OPENAI_API_VERSION",  # Replace with your actual API version
-        azure_endpoint= "YOUR_AZURE_OPENAI_ENDPOINT",  # Replace with your actual endpoint
-        api_key="YOUR_AZURE_OPENAI_API_KEY",  # Replace with your actual API key
+        api_version=api_version,  # Replace with your actual API version
+        azure_endpoint= endpoint,  # Replace with your actual endpoint
+        api_key=api_key,  # Replace with your actual API key
     )
     prompt = build_check_prompt(query, answer, context)
     for attempt in range(max_retry):
